@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "CombatEngine.h"
 #include "RPGGameModeBase.generated.h"
 
 /**
@@ -16,13 +17,31 @@ class RPG_API ARPGGameModeBase : public AGameModeBase
 	
 public:
 
+	ARPGGameModeBase();
+	
+	virtual void BeginPlay() override;
 
+	virtual void Tick(float DeltaSeconds) override;
+
+	CombatEngine* CurrentCombatInstance;
+
+	TArray<UGameCharacter*> EnemyParty;
+
+	UFUNCTION(Exec, BlueprintCallable)
+	void TestCombat();
 
 protected:
 
+	UPROPERTY()
+	class UCombatUIWidget* CombatUIInstance;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "UI")
+	TSubclassOf<class UCombatUIWidget> CombatUIClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "UI")
+	TSubclassOf<class UUserWidget> GameOverUIClass;
 
 private:
 	
-	
+
 };

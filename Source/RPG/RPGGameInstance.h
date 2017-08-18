@@ -23,6 +23,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AAA")
 	class UDataTable* CharactersInfoDataTable;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Game Data")
 	TArray<UGameCharacter*> PartyMembers;
 
 	void Init();
@@ -32,6 +33,9 @@ public:
 		reset the game with dead party members!).  
 	*/
 	void PrepareReset();
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Game Data")
+	bool TalkShop;
 
 protected:
 

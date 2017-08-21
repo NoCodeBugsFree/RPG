@@ -41,9 +41,7 @@ UGameCharacter* UGameCharacter::CreateGameCharacter(FCharacterInfo* characterInf
 		
 		character->bIsPlayer = true;
 	}
-
 	
-
 	return character;
 }
 
@@ -59,7 +57,9 @@ UGameCharacter* UGameCharacter::CreateGameCharacter(FEnemyInfo* enemyInfo, UObje
 	character->ATK = enemyInfo->ATK;
 	character->DEF = enemyInfo->DEF;
 	character->LUCK = enemyInfo->Luck;
+	character->Gold = enemyInfo->Gold;
 	
+	character->DecisionMaker = new TestDecisionMaker();
 	character->bIsPlayer = false;
 
 	return character;

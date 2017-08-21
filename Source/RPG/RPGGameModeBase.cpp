@@ -29,12 +29,7 @@ void ARPGGameModeBase::Tick(float DeltaSeconds)
 		bool bIsCombatOver = CurrentCombatInstance->Tick(DeltaSeconds);
 		if (bIsCombatOver)
 		{
-			for (int32 i = 0; i < CurrentCombatInstance->PlayerParty.Num(); i++)
-			{
-				CurrentCombatInstance->PlayerParty[i]->DecisionMaker = nullptr;
-			}
-
-
+			
 			if (CurrentCombatInstance->CombatPhase == ECombatPhase::CPhase_GameOver)
 			{
 				UE_LOG(LogTemp, Log, TEXT("Player loses combat, game over"));
@@ -45,16 +40,27 @@ void ARPGGameModeBase::Tick(float DeltaSeconds)
 			}
 			else if (CurrentCombatInstance->CombatPhase == ECombatPhase::CPhase_Victory)
 			{
-				UE_LOG(LogTemp, Log, TEXT("Player wins combat"));
+				UE_LOG(LogTemp, Log, TEXT("Player wins combat!"));
+				URPGGameInstance* RPGGameInstance = Cast<URPGGameInstance>(GetGameInstance());
+				if (RPGGameInstance)
+				{
+					RPGGameInstance->GameGold += CurrentCombatInstance->GoldTotal;
+				}
+
+				UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetActorTickEnabled(true);
+
+				for (int32 i = 0; i < CurrentCombatInstance->PlayerParty.Num(); i++)
+				{
+					CurrentCombatInstance->PlayerParty[i]->DecisionMaker = nullptr;
+				}
 			}
-			
-			UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetActorTickEnabled(true);
-			delete(CurrentCombatInstance);
-			CurrentCombatInstance = nullptr;
-			EnemyParty.Empty();
 			
 			CombatUIInstance->RemoveFromViewport();
 			CombatUIInstance = nullptr;
+			
+			delete(CurrentCombatInstance);
+			CurrentCombatInstance = nullptr;
+			EnemyParty.Empty();
 		}
 	}
 }

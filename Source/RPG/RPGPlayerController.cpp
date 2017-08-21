@@ -25,9 +25,9 @@ void ARPGPlayerController::SetupInputComponent()
 {
 	if (InputComponent == NULL)
 	{
-		InputComponent = ConstructObject<UInputComponent>(UInputComponent::StaticClass(), this, TEXT("PC_InputComponent0"));
+		//InputComponent = ConstructObject<UInputComponent>(UInputComponent::StaticClass(), this, TEXT("PC_InputComponent0"));
 		// TODO Test NewObject
-		// InputComponent = NewObject<UInputComponent>(UInputComponent::StaticClass(), TEXT("PC_InputComponent0"));
+		InputComponent = NewObject<UInputComponent>(UInputComponent::StaticClass(), TEXT("PC_InputComponent0"));
 		InputComponent->RegisterComponent();
 	}
 

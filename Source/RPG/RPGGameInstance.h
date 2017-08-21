@@ -18,8 +18,6 @@ class RPG_API URPGGameInstance : public UGameInstance
 	
 public:
 	
-	URPGGameInstance();
-	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AAA")
 	class UDataTable* CharactersInfoDataTable;
 
@@ -37,11 +35,11 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Game Data")
 	bool TalkShop;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Data")
+	int32 GameGold;
+
 protected:
 
 	bool bIsInitialized;
-	
-private:
-	
 	
 };

@@ -48,6 +48,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = CharacterInfo)
 	int32 LUCK;
 
+	/** Current Gold amount  */
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = CharacterInfo)
+	int32 Gold;
+
 	// -----------------------------------------------------------------------------------
 
 	static UGameCharacter* CreateGameCharacter(FCharacterInfo* characterInfo, UObject* outer);

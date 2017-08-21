@@ -4,11 +4,6 @@
 #include "GameCharacter.h"
 #include "FCharacterClassInfo.h"
 
-URPGGameInstance::URPGGameInstance()
-{
-
-}
-
 void URPGGameInstance::Init()
 {
 	if (bIsInitialized)

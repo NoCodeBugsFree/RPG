@@ -113,5 +113,32 @@ struct FEnemyInfo : public FTableRowBase
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "EnemyInfo")
 	TArray<FString> Abilities;
 
+	/** Reward gold amount  */
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "EnemyInfo")
+	int32 Gold;
+
 };
 
+USTRUCT(BlueprintType)
+struct FItemsData : public FTableRowBase
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "ItemData")
+	int32 HP;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "ItemData")
+	int32 MP;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "ItemData")
+	int32 ATK;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "ItemData")
+	int32 DEF;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "ItemData")
+	int32 Luck;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "ItemData")
+	int32 Gold;
+};

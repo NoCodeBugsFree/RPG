@@ -49,6 +49,8 @@ public:
 
 	void SetPhase(ECombatPhase NewCombatPhase);
 
+	int32 GoldTotal;
+
 protected:
 
 	/** During the Decision and Action phases,

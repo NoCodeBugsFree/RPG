@@ -116,11 +116,13 @@ bool CombatEngine::Tick(float DeltaSeconds)
 
 	// check for victory
 	DeadCount = 0;
+	int32 Gold = 0;
 	for (int i = 0; i < EnemyParty.Num(); i++)
 	{
 		if (EnemyParty[i]->HP <= 0)
 		{
 			DeadCount++;
+			Gold += EnemyParty[i]->Gold;
 		}
 	}
 
@@ -128,6 +130,7 @@ bool CombatEngine::Tick(float DeltaSeconds)
 	if (DeadCount == EnemyParty.Num())
 	{
 		SetPhase(ECombatPhase::CPhase_Victory);
+		GoldTotal = Gold;
 		return false;
 	}
 

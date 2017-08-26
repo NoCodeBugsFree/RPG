@@ -25,6 +25,9 @@ public:
 	FCharacterClassInfo* ClassInfo;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = CharacterInfo)
+	TArray<FString> LearnedAbilities;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = CharacterInfo)
 	FString CharacterName;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = CharacterInfo)
@@ -51,6 +54,15 @@ public:
 	/** Current Gold amount  */
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = CharacterInfo)
 	int32 Gold;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = CharacterInfo)
+	int32 XP;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = CharacterInfo)
+	int32 MXP;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = CharacterInfo)
+	int32 Lvl;
 
 	// -----------------------------------------------------------------------------------
 

@@ -38,6 +38,12 @@ UGameCharacter* UGameCharacter::CreateGameCharacter(FCharacterInfo* characterInf
 		character->ATK = character->ClassInfo->StartATK;
 		character->DEF = character->ClassInfo->StartDEF;
 		character->LUCK = character->ClassInfo->StartLuck;
+
+		character->XP = character->ClassInfo->XP;
+		character->MXP = character->ClassInfo->MXP;
+		character->Lvl = character->ClassInfo->Lvl;
+
+		character->LearnedAbilities = character->ClassInfo->LearnedAbilities;
 		
 		character->bIsPlayer = true;
 	}
@@ -58,6 +64,8 @@ UGameCharacter* UGameCharacter::CreateGameCharacter(FEnemyInfo* enemyInfo, UObje
 	character->DEF = enemyInfo->DEF;
 	character->LUCK = enemyInfo->Luck;
 	character->Gold = enemyInfo->Gold;
+
+	character->XP = enemyInfo->XP;
 	
 	character->DecisionMaker = new TestDecisionMaker();
 	character->bIsPlayer = false;

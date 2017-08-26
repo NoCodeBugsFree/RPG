@@ -45,13 +45,27 @@ void ARPGGameModeBase::Tick(float DeltaSeconds)
 				if (RPGGameInstance)
 				{
 					RPGGameInstance->GameGold += CurrentCombatInstance->GoldTotal;
-				}
 
-				UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetActorTickEnabled(true);
+					for (int32 i = 0; i < CurrentCombatInstance->PlayerParty.Num(); i++)
+					{
+						CurrentCombatInstance->PlayerParty[i]->DecisionMaker = nullptr;
+						
+						RPGGameInstance->PartyMembers[i]->XP += CurrentCombatInstance->XPTotal;
 
-				for (int32 i = 0; i < CurrentCombatInstance->PlayerParty.Num(); i++)
-				{
-					CurrentCombatInstance->PlayerParty[i]->DecisionMaker = nullptr;
+						if (RPGGameInstance->PartyMembers[i]->XP >= RPGGameInstance->PartyMembers[i]->MXP)
+						{
+							RPGGameInstance->PartyMembers[i]->Lvl++;
+							RPGGameInstance->PartyMembers[i]->MHP++;
+							RPGGameInstance->PartyMembers[i]->MMP++;
+							RPGGameInstance->PartyMembers[i]->ATK++;
+							RPGGameInstance->PartyMembers[i]->DEF++;
+							RPGGameInstance->PartyMembers[i]->LUCK++;
+							RPGGameInstance->PartyMembers[i]->MXP += RPGGameInstance->PartyMembers[i]->MXP;
+						}
+					}
+
+					UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetActorTickEnabled(true);
+
 				}
 			}
 			

@@ -37,19 +37,24 @@ public:
 	
 	ECombatPhase CombatPhase;
 
+	/** will be responsible for holding the total amount of XP gained from battle if
+	  * all of the enemies have perished  
+	  */
+	int32 XPTotal;
+
+	int32 GoldTotal;
+
+	/** This will be used to switch between, for example, BeginMakeDecision and MakeDecision .  */
+	bool bWaitingForCharacter;
+
 	/**   
 	*	The CombatEngine class defines a Tick method. This will be called by the game mode of
 	*	very frame as long as combat is not over, and it returns true when combat has finished
 	*	(or false otherwise).
 	*/
 	bool Tick(float DeltaSeconds);
-
-	/** This will be used to switch between, for example, BeginMakeDecision and MakeDecision .  */
-	bool bWaitingForCharacter;
-
+	
 	void SetPhase(ECombatPhase NewCombatPhase);
-
-	int32 GoldTotal;
 
 protected:
 

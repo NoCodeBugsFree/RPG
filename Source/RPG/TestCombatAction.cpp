@@ -29,7 +29,7 @@ void TestCombatAction::BeginExecuteAction(UGameCharacter* NewCharacter)
 	}
 	
 	UE_LOG(LogTemp, Log, TEXT("%s attacks %s"), *Character->CharacterName, *Target->CharacterName);
-	Target->HP -= 10;
+	Target->HP -= (Character->ATK - Target->DEF) >= 0 ? Character->ATK - Target->DEF : 0;
 	DelayTimer = 1.0f;
 }
 

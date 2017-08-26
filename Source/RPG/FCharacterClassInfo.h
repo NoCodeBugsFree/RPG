@@ -67,6 +67,18 @@ struct FCharacterClassInfo : public FTableRowBase
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "ClassInfo")
 	TArray<int32> LearnedAbilityLevels;
 
+	/** will hold cumulative experience  */
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "ClassInfo")
+	int32 XP;
+
+	/**  will hold the experience cap to the next level */
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "ClassInfo")
+	int32 MXP;
+
+	/** current level  */
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "ClassInfo")
+	int32 Lvl;
+
 };
 
 USTRUCT(BlueprintType)
@@ -116,6 +128,9 @@ struct FEnemyInfo : public FTableRowBase
 	/** Reward gold amount  */
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "EnemyInfo")
 	int32 Gold;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "EnemyInfo")
+	int32 XP;
 
 };
 
